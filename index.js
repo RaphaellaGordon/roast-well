@@ -6,6 +6,7 @@ const categoriesRouter = require('./routes/categories');
 const ordersRouter = require('./routes/orders');
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
+const path = require('path');
 
 const app = express();
 

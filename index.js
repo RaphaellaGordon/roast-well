@@ -9,20 +9,13 @@ const cartsRouter = require('./routes/carts');
 
 const app = express();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "cleint", "build", 'index.html'))
-  })
-}
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
 // const uri = process.env.ATLAS_URI;
-mongoose.connect("mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh")
 .then(() => console.log(`Connected to MongoDB`))
 .catch(err => console.log(err));
 
@@ -32,6 +25,13 @@ app.use('/orders', ordersRouter);
 app.use('/products', productsRouter);
 app.use('/carts', cartsRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "cleint", "build", 'index.html'))
+  })
+}
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`)

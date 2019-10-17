@@ -7,8 +7,6 @@ const ordersRouter = require('./routes/orders');
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 
-require('dotenv').config();
-
 const app = express();
 
 if (process.env.NODE_ENV === "production") {
@@ -23,8 +21,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
+// const uri = process.env.ATLAS_URI;
+mongoose.connect("mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true})
 .then(() => console.log(`Connected to MongoDB`))
 .catch(err => console.log(err));
 

@@ -12,7 +12,6 @@ class Category extends Component {
   componentDidMount() {
     axios.get(`/categories/${this.props.parent}/cats`)
       .then(res => {
-        console.log(res.data.categories)
         this.setState({
           categories: res.data.categories.map(cat => {
             return {
@@ -50,6 +49,7 @@ class Category extends Component {
     return (
       <div className="container">
         <h3>{this.capitaliseTitle()}</h3>
+        {console.log(this.state.categories)}
         <div>
         {this.catList()}
         </div>

@@ -8,7 +8,7 @@ const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 const path = require('path');
 // import dotenv from 'dotenv';
-// require('dotenv').config({ path: '.ENV' });
+require('dotenv').config({ path: '.ENV' });
 
 const app = express();
 
@@ -21,7 +21,7 @@ app.use(express.json());
 // MONGODB= 'mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh';
 // MONGODB_URI= 'mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh';
 // MONGODB_URI= 'mongodb://heroku_n09zfqnh:cvek1cs7ju6j8a7nq64d9hv2dq@ds137008.mlab.com:37008/heroku_n09zfqnh';
-mongoose.connect(MONGODB_URI || process.env.MONGOLAB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('My MONGODB_URI is ' + process.env.MONGODB_URI))
 .catch(err => console.log(err));
 

@@ -49,7 +49,6 @@ class Category extends Component {
     return (
       <div className="container">
         <h3>{this.capitaliseTitle()}</h3>
-        {console.log(this.state.categories)}
         <div>
         {this.catList()}
         </div>

@@ -7,6 +7,8 @@ const ordersRouter = require('./routes/orders');
 const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 const path = require('path');
+import dotenv from 'dotenv';
+require('dotenv').config();
 
 const app = express();
 
@@ -16,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // const uri = process.env.ATLAS_URI;
-mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGODB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI || process.env.MONGODB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true})
 .then(() => console.log(`Connected to MongoDB`))
 .catch(err => console.log(err));
 

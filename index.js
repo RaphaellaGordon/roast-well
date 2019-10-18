@@ -18,7 +18,9 @@ app.use(cors());
 app.use(express.json());
 
 // const uri = process.env.ATLAS_URI;
-mongoose.connect("mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh" || process.env.MONGODB_URI || process.env.MONGOLAB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true, useUnifiedTopology: true})
+MONGODB= 'mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh';
+MONGODB_URI= 'mongodb://heroku_n09zfqnh:cvek1cs7ju6j8a7nq64d9hv2dq@ds137008.mlab.com:37008/heroku_n09zfqnh';
+mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI || "mongodb://user:password123@ds137008.mlab.com:37008/heroku_n09zfqnh", {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => console.log('My MONGODB_URI is ' + process.env.MONGODB_URI))
 .catch(err => console.log(err));
 

@@ -12,7 +12,7 @@ class ShoppingCart extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/carts/')
+    axios.get('/carts/')
       .then(res => {
         this.setState({
           orders: res.data.carts.map(cart => {
@@ -64,7 +64,7 @@ class ShoppingCart extends Component {
   }
 
   deleteProduct = (id) => {
-    axios.delete(`http://localhost:5000/carts/${id}`)
+    axios.delete(`/carts/${id}`)
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
     
@@ -81,11 +81,11 @@ class ShoppingCart extends Component {
     };
 
     
-    axios.post('http://localhost:5000/orders', submitOrder)
+    axios.post('/orders', submitOrder)
       .then(res => console.log(res.data))
       .catch(err => console.log("Error: " + err));
 
-    axios.delete('http://localhost:5000/carts')
+    axios.delete('/carts')
       .then(res => console.log(res.data))
       .catch(err => console.log("Error: " + err));
     

@@ -18,7 +18,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:5000/products/${this.props.match.params.product}`)
+    axios.get(`/products/${this.props.match.params.product}`)
       .then(res => {
         this.setState({
           name: res.data.product.name,
@@ -54,7 +54,7 @@ class Product extends Component {
       price: this.state.price
     }
     
-    axios.post('http://localhost:5000/carts', order)
+    axios.post('/carts', order)
       .then(res => console.log(res.data))
       .catch(err => console.log("Error: " + err));
 

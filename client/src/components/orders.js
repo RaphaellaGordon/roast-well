@@ -13,7 +13,7 @@ class Orders extends Component {
 
 
   componentDidMount() {
-    axios.get('http://localhost:5000/orders/')
+    axios.get('/orders/')
       .then(res => {
         let newList = res.data.orders.map(cart => {
           return {
@@ -73,7 +73,7 @@ class Orders extends Component {
   }
 
   deleteProduct = (id) => {
-    axios.delete(`http://localhost:5000/orders/${id}`)
+    axios.delete(`/${id}`)
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
     

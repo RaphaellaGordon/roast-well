@@ -10,7 +10,7 @@ class Category extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:5000/categories/${this.props.parent}/cats`)
+    axios.get(`/categories/${this.props.parent}/cats`)
       .then(res => {
         this.setState({
           categories: res.data.categories.map(cat => {

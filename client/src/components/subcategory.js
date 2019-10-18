@@ -12,7 +12,7 @@ class Subcategory extends Component {
   componentDidMount() {
     axios.get(`/${this.props.match.params.category}/products`)
       .then(res => {
-        console.log(res.data.products)
+        console.log(this.props.match.params)
         this.setState({
           products: res.data.products.map(product => {
             return {

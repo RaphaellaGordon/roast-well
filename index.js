@@ -8,7 +8,7 @@ const productsRouter = require('./routes/products');
 const cartsRouter = require('./routes/carts');
 const path = require('path');
 import dotenv from 'dotenv';
-require('dotenv').config();
+require('dotenv').config({ path: '.ENV' });
 
 const app = express();
 

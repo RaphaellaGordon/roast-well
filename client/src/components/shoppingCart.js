@@ -41,7 +41,7 @@ class ShoppingCart extends Component {
   }
 
   onSubmit = (e) => {
-    if(this.state.order.length > 0) {
+    if(this.state.orders.length > 0) {
       e.preventDefault();
   
       const submitOrder = {

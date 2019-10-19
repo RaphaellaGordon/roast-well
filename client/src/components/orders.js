@@ -44,36 +44,8 @@ class Orders extends Component {
       .catch(err => console.log(err))
   }
 
-  orderList = () => {
-    if (this.state.list.length < 1) {
-      return(
-        <div>
-          <p>No orders</p>
-        </div>
-      )
-    } else {
-      return this.state.list.map(cartObj => {
-        return (
-        <div>
-          <div key={cartObj.id}>
-            {cartObj.cart.map(productObj => {
-              return (
-                <div>
-                  <p>{productObj.name}, {productObj.milkType}, {productObj.size}</p>
-                </div>
-              )
-            })}
-             <a href="#" onClick={() => {this.deleteProduct(cartObj.id)}}>delete</a>
-          </div>
-          <br />
-        </div>
-        )
-      })
-    }
-  }
-
   deleteProduct = (id) => {
-    axios.delete(`/${id}`)
+    axios.delete(`/orders/${id}`)
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
     
@@ -82,13 +54,72 @@ class Orders extends Component {
     })
   }
 
+  orderList = () => {
+    if (this.state.list.length < 1) {
+      return(
+        <div className="centre">
+          <p>No orders</p>
+        </div>
+      )
+    } else {
+      return this.state.list.map(cartObj => {
+        return (
+       
+          <tbody key={cartObj.id}>
+            {cartObj.cart.map(productObj => {
+              return (
+                <tr>
+                  <td className="centre" width="30%">{productObj.name}</td>
+                  <td className="centre" width="30%">{productObj.milkType}</td>
+                  <td className="centre" width="30%">{productObj.size}</td>
+                </tr>
+              )
+            })}
+            <tr>
+              <td with="30%"></td>
+              <td className="centre" with="30%">
+                <div className="del-padding">
+                <a className="del-btn" href="#" onClick={() => {this.deleteProduct(cartObj.id)}}>delete</a>
+                </div>
+              </td>
+              <td with="30%"></td>
+            </tr>
+          </tbody>
+  
+
+        // <div>
+        //   <div key={cartObj.id}>
+        //     {cartObj.cart.map(productObj => {
+        //       return (
+        //         <div>
+        //           <p>{productObj.name}, {productObj.milkType}, {productObj.size}</p>
+        //         </div>
+        //       )
+        //     })}
+        //      <a href="#" onClick={() => {this.deleteProduct(cartObj.id)}}>delete</a>
+        //   </div>
+        //   <br />
+        // </div>
+        )
+      })
+    }
+  }
+
   render() {
     return (
       <div className="container">
-        Orders Page
-        {this.orderList()}
-        {console.log('state.list: ', this.state.list)}
-      </div>
+        <h1 className="heading">Orders Page</h1>
+        <table className="table">
+          <thead className="thead">
+            <tr>
+              <th>Product</th>
+              <th>Milk Type</th>
+              <th>Size</th>
+            </tr>
+          </thead>
+          {this.orderList()}
+        </table>
+        </div>
     )
   }
 }

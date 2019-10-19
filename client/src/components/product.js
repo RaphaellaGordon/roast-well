@@ -78,10 +78,11 @@ class Product extends Component {
   drinkOptions = () => {
     if (this.props.isdrink === true) {
       return (
-        <div>
+        <div className="options-container under-img">
           <select
           value={this.state.milkType}
           onChange={this.onChangeMilk}
+          className="select"
           >
             <option>No Milk</option>
             <option>Whole Milk</option>
@@ -92,6 +93,7 @@ class Product extends Component {
           <select
           value={this.state.size}
           onChange={this.onChangeSize}
+          className="select margin1"
           >
             <option>Small</option>
             <option>Medium</option>
@@ -107,7 +109,7 @@ class Product extends Component {
   confirmSubmit = () => {
     if (this.state.isSubmit === true) {
       return (
-        <div>
+        <div className="confirm-pop">
           <p>Added to basket</p>
         </div>
       )
@@ -117,19 +119,21 @@ class Product extends Component {
   render() {
     return (
       <div className="container">
-        <div>
-          <h3>{this.state.name}</h3>
-          <img src={this.state.imgUrl} alt={this.state.name} />
-          <p>{this.state.description}</p>
-          <p>£{this.state.price}</p>
-          <form onSubmit={this.onSubmit}>
-            <div>
-              {this.drinkOptions()}
-            </div>
-            <input type="submit" value="Add to order" />
-          </form>
-          {this.confirmSubmit()}
+        <h1 className="heading">{this.state.name}</h1>
+        <div className="centre">
+          <img className="centre" src={this.state.imgUrl} alt={this.state.name} />
         </div>
+        <p className="centre">{this.state.description}</p>
+        <p className="centre">£{this.state.price}</p>
+        <form onSubmit={this.onSubmit}>
+          <div>
+            {this.drinkOptions()}
+          </div>
+          <div className="submit-cont">
+            <input className="submit-btn" type="submit" value="Add to order" />
+          </div>
+        </form>
+        {this.confirmSubmit()}
       </div>
     )
   }

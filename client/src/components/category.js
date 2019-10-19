@@ -28,10 +28,12 @@ class Category extends Component {
   catList = () => {
     return this.state.categories.map(cat => {
       return (
-        <Link to={`/${this.props.parent}/${cat.name}`} key={cat.id}>
+        <Link className="list-item" to={`/${this.props.parent}/${cat.name}`} key={cat.id}>
           <div>
-          <p>{cat.name}</p>
-          <img src={cat.imgUrl} alt={cat.name} />
+            <div className="hover-div">
+              <img src={cat.imgUrl} alt={cat.name} />
+            </div>
+            <h3 className="item-name">{cat.name}</h3>
           </div>
         </Link>
         
@@ -48,8 +50,8 @@ class Category extends Component {
   render() {
     return (
       <div className="container">
-        <h3>{this.capitaliseTitle()}</h3>
-        <div>
+        <h1 className="heading">{this.capitaliseTitle()}</h1>
+        <div className="list-container">
         {this.catList()}
         </div>
 

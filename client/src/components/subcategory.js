@@ -31,10 +31,12 @@ class Subcategory extends Component {
   subCatList = () => {
     return this.state.products.map(product => {
       return (
-        <Link to={`/${this.props.parent}/${this.props.match.params.category}/${product.name}`} key={product.id}>
+        <Link className="list-item" to={`/${this.props.parent}/${this.props.match.params.category}/${product.name}`} key={product.id}>
           <div>
-          <img src={product.imgUrl} alt={product.name} />
-          <p>{product.name}</p>
+            <div className="hover-div">
+              <img src={product.imgUrl} alt={product.name} />
+            </div>
+            <h3 className="item-name">{product.name}</h3>
           </div>
         </Link>
         
@@ -51,8 +53,8 @@ class Subcategory extends Component {
   render() {
     return (
       <div className="container">
-        <h3>{this.capitaliseTitle()}</h3>
-        <div>
+        <h1 className="heading">{this.capitaliseTitle()}</h1>
+        <div className="list-container">
         {this.subCatList()}
         </div>
       </div>

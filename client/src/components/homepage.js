@@ -9,7 +9,7 @@ const Homepage = () => {
       </div>
       <div className="box-section">
         <div className="section-text">
-          <h1>Milk it for all its worth</h1>
+          <h1>Milk it for all it's worth</h1>
           <h4>10% off your favourite coffee</h4>
           <Link to={'/drinks/coffee/Latte'}>
             <button type="button">Order now!</button>
